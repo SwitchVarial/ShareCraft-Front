@@ -3,10 +3,8 @@ import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import AssignmentList from "./AssignmentList";
 import axios from 'axios';
-import HomeHero from "./HomeHero";
 
-function Home() {
-
+function Assignments() {
     const [assignments, setAssignments] = useState([]);
     const [error, setError] = useState('Fetching data');
 
@@ -27,7 +25,6 @@ function Home() {
 
     return (
         <Box sx={{minHeight: '100vh'}}>
-            <HomeHero />
             {
                 error.length > 0 ?
                     <Typography>{ Error }</Typography>
@@ -35,10 +32,10 @@ function Home() {
                 assignments.length > 0 ?
                     <AssignmentList assignments={ assignments } />
                 :
-                <Typography>Oops! Something went Wrong we coundn't find any assignments!</Typography>
+                <Typography>Oops! Something went Wrong we coundn't find any works!</Typography>
             }
         </Box>
     )
 }
 
-export default Home;
+export default Assignments;

@@ -6,7 +6,7 @@ const Theme = createTheme({
     common: {black: '#000', white: '#FFF'},
     primary: {main: '#37A040', light: '#37A040', dark: '#37A040', contrastText: '#FED136'},
     secondary: {main: '#FED136', light: '#FED136', dark: '#FED136', contrastText: '#37A040'},
-    text: {primary: '#000', secondary: '#37A040', disabled: grey[300]},
+    text: {primary: '#000', secondary: '#37A040', disabled: grey[500]},
     action: {hover: 'rgba(0,0,0,0)'},
     background: {default: grey[100]}
   },
@@ -27,12 +27,12 @@ const Theme = createTheme({
     body1: {
       textAlign: 'left',
       fontWeight: 400,
-      fontSize: '0.8rem'
+      fontSize: '0.9rem'
     },
     body2: {
       textAlign: 'center',
       fontWeight: 400,
-      fontSize: '0.8rem'
+      fontSize: '0.9rem'
     },
     button: {
       textTransform: 'none',

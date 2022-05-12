@@ -9,9 +9,10 @@ import Theme from './components/Theme';
 import StickyFooter from './components/FooterMenu';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
-import Assignments from './components/Assigments';
+import Assignments from './components/Assignments';
 import Licenses from './components/Licenses';
 import Info from './components/Info';
+import Assignment from './components/Assignment';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -25,6 +26,8 @@ root.render(
 				<Route path='tehtavat' element={ <Assignments /> } />
 				<Route path='lisenssit' element={ <Licenses /> } />
 				<Route path='info' element={ <Info /> } />
+				<Route path='/assignment/:id' element={ <Assignment /> } />
+				<Route path='*' element={ <Home /> } />
 	  		</Routes>
 	  	<StickyFooter />
 		</ThemeProvider>
