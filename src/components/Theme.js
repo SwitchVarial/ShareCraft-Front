@@ -11,7 +11,7 @@ const Theme = createTheme({
     background: {default: grey[100]}
   },
   shape: {
-    borderRadius: 100
+    borderRadius: 2
   },
   shadows: {
     0: "none"

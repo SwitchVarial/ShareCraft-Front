@@ -1,11 +1,10 @@
 import { Box, Button, Card, CardContent, CardHeader, CardMedia, Divider, IconButton, Typography } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
-import PrintIcon from '@mui/icons-material/Print';
 import React from "react";
+import PrintButton from "./PrintButton";
 
 const cardStyle = {
     display: 'flex',
-    borderRadius: '7px',
     height: '100%'
 }
 
@@ -61,8 +60,6 @@ const iconButtonStyle = {
     }
 }
 
-
-
 function HeroCard(props) {
     return (
         <Box>
@@ -73,7 +70,7 @@ function HeroCard(props) {
                     <Box sx={{width: '100%', display: 'flex'}}>
                         <Typography variant="h2" sx={ cardSubHeader }>{ props.card.classLevel.level }</Typography>
                         <Box sx={{ ml: 'auto', mt: 0, display: { xs: "none", md: "flex" } }}>
-                            <Button sx={ cardButton } variant="text" endIcon={<IconButton size="small" sx={ iconButtonStyle } component="span"><PrintIcon fontSize="small"/></IconButton>}>Tulosta</Button>
+                            <PrintButton />
                             <Button sx={ cardButton } variant="text" endIcon={<IconButton size="small" sx={ iconButtonStyle } component="span"><SendIcon fontSize="small"/></IconButton>}>Jaa</Button>
                         </Box>
                     </Box>

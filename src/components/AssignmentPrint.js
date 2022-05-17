@@ -1,11 +1,9 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useParams } from 'react-router';
 import axios from 'axios';
-import { Box, Button, Container, Divider, Grid, IconButton, Modal, Typography } from "@mui/material";
+import { Box, Button, Container, Divider, Grid, IconButton, Typography } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
-import PrintButton from "./PrintButton";
-import CloseIcon from '@mui/icons-material/Close';
-import SendAssignment from './SendAssignment';
+import PrintIcon from '@mui/icons-material/Print';
 
 const assignmentBox = {
     backgroundColor: 'common.white',
@@ -79,18 +77,9 @@ const licenseStyle = {
     mt: 2
 }
 
-const modalStyle = {
-    outline: 0,
-    backgroundColor: 'common.white',
-    m: { xs: 2, md: 20 },
-    p: { xs: 1, md: 3 },
-    borderRadius: 2
-};
-
 function Assignment() {
 
     let { id } = useParams();
-    let linkUrl = window.location.href;
 
     const [assignment, setAssignment] = useState('');
     const [error, setError] = useState('Fetching data');
@@ -109,11 +98,6 @@ function Assignment() {
     useEffect(() => {
         getAssignmentById();
     }, [getAssignmentById]);
-
-    // Modal sähköpostin lähettämiseen
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
 
     return (
         <Box sx={ hero }>
@@ -136,8 +120,8 @@ function Assignment() {
                                 <Box sx={{ width: '100%', display: 'flex' }}>
                                     <Typography variant="h2" sx={ subHeader }>{ assignment.classLevel.level }</Typography>
                                     <Box sx={{ ml: 'auto', mt: 0, display: 'flex' }}>
-                                        <PrintButton />
-                                        <Button onClick={ handleOpen } sx={ shareButton } variant="text" endIcon={<IconButton size="small" sx={ iconButtonStyle } component="span"><SendIcon fontSize="small"/></IconButton>}>Jaa</Button>
+                                        <Button sx={ shareButton } variant="text" endIcon={<IconButton size="small" sx={ iconButtonStyle } component="span"><PrintIcon fontSize="small"/></IconButton>}>Tulosta</Button>
+                                        <Button sx={ shareButton } variant="text" endIcon={<IconButton size="small" sx={ iconButtonStyle } component="span"><SendIcon fontSize="small"/></IconButton>}>Jaa</Button>
                                     </Box>
                                 </Box>
                                 <Divider variant="middle" sx={{ my: 2, mx: 0, px: 0 }} />
@@ -169,16 +153,6 @@ function Assignment() {
                     <Typography>Oops! Something went Wrong we coundn't find any assignment!</Typography>
                 }
             </Container>
-            <Modal open={ open } onClose={ handleClose } BackdropProps={{style:{backgroundColor: '#37A040', opacity:'0.2'}}}>
-                <Box sx={ modalStyle }>
-                    <Box sx={{ display: 'flex', flexDirection: 'row-reverse' }}>
-                        <IconButton sx={{ ml: 'auto' }} onClick={ handleClose } aria-label="close">
-                            <CloseIcon />
-                        </IconButton>
-                    </Box>
-                    <SendAssignment link={ linkUrl }/>
-                </Box>
-            </Modal>
         </Box>
     )
 }
