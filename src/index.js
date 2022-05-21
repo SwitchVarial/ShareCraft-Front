@@ -13,6 +13,9 @@ import Assignments from './components/Assignments';
 import Licenses from './components/Licenses';
 import Info from './components/Info';
 import Assignment from './components/Assignment';
+import AddAssignment from './components/AddAssignment';
+import AddMaterials from './components/AddMaterials';
+import AddImages from './components/AddImages';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -26,7 +29,10 @@ root.render(
 				<Route path='tehtavat' element={ <Assignments /> } />
 				<Route path='lisenssit' element={ <Licenses /> } />
 				<Route path='info' element={ <Info /> } />
-				<Route path='/assignment/:id' element={ <Assignment /> } />
+				<Route path='/tehtava/:id' element={ <Assignment /> } />
+				<Route path='lisaa-tehtava' element={ <AddAssignment />} />
+				<Route path='/lisaa-materiaalit/:id' element={ <AddMaterials />} />
+				<Route path='/lisaa-kuvat/:id' element={ <AddImages />} />
 				<Route path='*' element={ <Home /> } />
 	  		</Routes>
 	  	<StickyFooter />

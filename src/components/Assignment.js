@@ -130,7 +130,14 @@ function Assignment() {
                     <Box sx={ assignmentBox }>
                         <Grid container spacing={{ xs: 1, md: 2 }}>
                             <Grid item xs={12} sm={6}>
-                                <Box component="img" sx={{ objectFit: 'cover', maxWidth: '100%' }} src={ assignment.images[0].url } alt={ assignment.name } />
+                                {
+                                    assignment.images[0] ?
+                                    <Box component="img" sx={{ objectFit: 'cover', maxWidth: '100%' }} src={ 'http://localhost:8080/images/' + assignment.images[0].url } alt={ assignment.name } />
+                                    :
+                                    <Box sx={{ backgroundColor:'white', height: 300, width: 250 }}>
+                                        <Typography sx={{ padding:2 }}>No Image</Typography>
+                                    </Box>
+                                }
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <Box sx={{ width: '100%', display: 'flex' }}>

@@ -33,5 +33,5 @@ export default class PrintButton extends Component {
         <Button sx={ shareButton } onClick={this.print} variant="text" endIcon={<IconButton size="small" sx={ iconButtonStyle } component="span"><PrintIcon fontSize="small"/></IconButton>}>Tulosta</Button>
         </Box>
         )
-    } 
+    }
 }

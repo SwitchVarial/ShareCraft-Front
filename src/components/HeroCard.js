@@ -5,7 +5,8 @@ import PrintButton from "./PrintButton";
 
 const cardStyle = {
     display: 'flex',
-    height: '100%'
+    height: '100%',
+    borderRadius: '7px'
 }
 
 const cardHeaderStyle = {

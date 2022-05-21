@@ -5,6 +5,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from '@mui/icons-material/Close';
 import Logo from "../../src/sharecraft-logo.svg";
 import SignUp from "./SignUp";
+import SignIn from "./SignIn";
+import UserMenu from "./UserMenu";
 import { Link } from "react-router-dom";
 
 const centeredLogo = {
@@ -64,14 +66,23 @@ function MainMenu() {
     const openDrawer = () => { setOpen(true); }
     const closeDrawer = () => { setOpen(false); }
 
-    // Modal sähköpostin lähettämiseen
+    // Modal rekisteröitymiseen
     const [openModal, setOpenModal] = useState(false);
     const handleOpen = () => setOpenModal(true);
-    const handleClose = () => setOpenModal(false);    
+    const handleClose = () => setOpenModal(false);
+
+    // Modal kirjautumiseen
+    const [openSignModal, setOpenSignModal] = useState(false);
+    const handleSignOpen = () => setOpenSignModal(true);
+    const handleSignClose = () => setOpenSignModal(false);  
+
+    const [token, setToken] = useState();
+    const signOut = () => setToken();
+    console.log(token);
 
     // Drawerin sisältö
     const drawer = 
-    <Drawer anchor="left" open={ open } onClick={ closeDrawer } BackdropProps={{style:{backgroundColor: '#37A040', opacity:'0.2'}}}>
+    <Drawer anchor="left" open={ open } onClick={ closeDrawer } BackdropProps={{ style:{backgroundColor: '#37A040', opacity:'0.2' }}}>
         <Box>
             <IconButton onClick={ closeDrawer }>
                 <CloseIcon />
@@ -91,19 +102,27 @@ function MainMenu() {
                 <ListItemText primary="Info" />
             </ListItem>
             <Divider />
-            <ListItem>
-                <Button size="small" variant="contained" onClick={ handleOpen } color="secondary" sx={{ mt: 2, width: '100%', borderRadius: '20px' }}>Rekisteröidy</Button>
-            </ListItem>
-            <ListItem>
-                <Button size="small" variant="contained" color="primary"  sx={{ width: '100%', borderRadius: '20px' }}>Kirjaudu</Button>
-            </ListItem>
+            { !token ?
+                <>
+                <ListItem>
+                    <Button size="small" variant="contained" onClick={ handleOpen } color="secondary" sx={{ mt: 2, width: '100%', borderRadius: '20px' }}>Rekisteröidy</Button>
+                </ListItem>
+                <ListItem>
+                    <Button size="small" variant="contained" onClick={ handleSignOpen } color="primary"  sx={{ width: '100%', borderRadius: '20px' }}>Kirjaudu</Button>
+                </ListItem>
+                </>
+            :
+                <Box sx={{ mt: 4 }}>
+                <ListItem button component={Link} to="lisaa-tehtava" sx={{ pl: 6, pr: 10, py: 0, mb: 3}}>
+                    <ListItemText sx={{ color: 'primary.main' }} primary="Lisää tehtävä" />
+                </ListItem>
+                <ListItem>
+                    <Button size="small" variant="contained" onClick={ signOut } color="primary"  sx={{ width: '100%', borderRadius: '20px' }}>Kirjaudu ulos</Button>
+                </ListItem>
+                </Box>
+            }
         </List>
     </Drawer>;
-
-
-
-
-
 
     return (
         <Box>
@@ -133,12 +152,16 @@ function MainMenu() {
                         <Box sx={ centeredLogo }>
                             <Box component="img" src={ Logo } sx={{ height: 37, width: 161 }}alt="ShareCraft-logo" />
                         </Box>
-
                         <Box sx={{ marginLeft: "auto", display: { xs: "none", md: "flex" } }}>
+                        { !token ?
+                            <>
                             <Button size="small" onClick={ handleOpen } variant="outlined" color="inherit" sx={ menuSecondaryButton }>Rekisteröidy</Button>
-                            <Button size="small" variant="contained" color="secondary" sx={ menuPrimaryButton }>Kirjaudu</Button>
+                            <Button size="small" onClick={ handleSignOpen } variant="contained" color="secondary" sx={ menuPrimaryButton }>Kirjaudu</Button>
+                            </>
+                        :
+                        <UserMenu />
+                        }
                         </Box>
-
                     </Toolbar>
                 </AppBar>
             </Box>
@@ -153,6 +176,21 @@ function MainMenu() {
                     <SignUp />
                 </Paper>
             </Modal>
+            { !token ?
+            <Modal open={ openSignModal } onClose={ handleSignClose } BackdropProps={{style:{backgroundColor: '#37A040', opacity:'0.2'}}}>
+                <Paper sx={ modalStyle }>
+                    <Box sx={{ display: 'flex', flexDirection: 'row-reverse' }}>
+                        <IconButton sx={{ ml: 'auto' }} onClick={ handleSignClose } aria-label="close">
+                            <CloseIcon />
+                        </IconButton>
+                    </Box>
+                    
+                    <SignIn setToken={ setToken }/>
+                    
+                </Paper>
+            </Modal>
+            : <Box/>
+            }
         </Box>
     )
 }

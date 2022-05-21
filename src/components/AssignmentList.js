@@ -65,9 +65,9 @@ function AssignmentList(props) {
                                             <Typography sx={ cardClassLevelHeader }>{ assignments.classLevel.level }</Typography>
                                         </CardContent>
                                         {
-                                            assignments.images[0].url ?
-                                            <Box component={ Link } to={'/assignment/' + assignments.assignment_id}>
-                                            <CardMedia component="img" sx={{ objectFit: 'cover', height: 300 }} image={ assignments.images[0].url } alt={ assignments.name }/>
+                                            assignments.images[0] ?
+                                            <Box component={ Link } to={'/tehtava/' + assignments.assignment_id}>
+                                            <CardMedia component="img" sx={{ objectFit: 'cover', height: 300 }} image={ 'http://localhost:8080/images/' + assignments.images[0].url } alt={ assignments.name }/>
                                             </Box>
                                             :
                                             <Box sx={{ backgroundColor:'white', height: 300, width: 250 }}>
@@ -79,7 +79,7 @@ function AssignmentList(props) {
                                             <Typography>{ assignments.description }</Typography>
                                         </CardContent>
                                         <CardActions sx={ cardActionsStyle }>
-                                            <Button size="small" component={ Link } to={'/assignment/' + assignments.assignment_id}>Katso ohje</Button>
+                                            <Button size="small" component={ Link } to={'/tehtava/' + assignments.assignment_id}>Katso ohje</Button>
                                         </CardActions>
                                         <CardContent sx={{ pt: 0 }}>
                                             <Box>

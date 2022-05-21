@@ -44,13 +44,13 @@ function SignUp() {
     };
 
     // Funktio Submit-napin painallukselle
-    const addAcoount = async (e) => {
+    const addAccount = async (e) => {
         if ( account.first_name.length > 0 && account.last_name.length > 0 && account.email.length > 0 && account.passwordHash.length > 0) {
             const data = {
                 first_name: account.first_name,
                 last_name: account.last_name,
                 username: account.email,
-                passwordHash: bcrypt.hashSync(account.passwordHash, bcrypt.genSaltSync()),
+                passwordHash: bcrypt.hashSync(account.passwordHash, bcrypt.genSaltSync(10)),
                 email: account.email,
                 active: account.active,
                 created_date: account.created_date,
@@ -59,9 +59,9 @@ function SignUp() {
             const json = JSON.stringify(data);
             console.log(json);
             try {
-                const response = await axios.post('http://localhost:8080/users', json, { headers: { 'Content-Type': 'application/json'}});
+                const response = await axios.post('http://localhost:8080/signup', json, { headers: { 'Content-Type': 'application/json'}});
                 setAccount({first_name:'', last_name:'', username:'', passwordHash:'', email:'', active: true, role: 'Teacher'})
-                console.log(response);
+                console.log(response.data);
             } catch (error) {
                 console.log(error);                
             }
@@ -92,7 +92,7 @@ function SignUp() {
                         </Grid>
                         <Grid item xs={12}>
                             <Box sx={{ display: 'flex', flexDirection: 'row-reverse' }}>
-                                <Button sx={ sendButton } onClick={ (e) => addAcoount(e) } variant="contained" color="info">Liity mukaan</Button>
+                                <Button sx={ sendButton } onClick={ (e) => addAccount(e) } variant="contained" color="info">Liity mukaan</Button>
                             </Box>
                         </Grid>
                     </Grid>
