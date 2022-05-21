@@ -119,8 +119,8 @@ function AddImages () {
     return (
         <Box sx={{minHeight: '100vh'}}>
             <Container sx={{ maxWidth: 'lg', padding: 3 }}>
-                <Typography variant='h2' sx={{ my: 3, textAlign: 'center' }}>Lisää materiaalit ja työvälineet.</Typography>
-                <Typography variant= "body2" sx={{ mb: 5, mt: 3, fontSize: '1.2rem' }}>Vaihe 2: Lisää työhon tavittavat materiaalit ja tarvikkeet.</Typography>
+                <Typography variant='h2' sx={{ my: 3, textAlign: 'center' }}>Lisää kuvia.</Typography>
+                <Typography variant= "body2" sx={{ mb: 5, mt: 3, fontSize: '1.2rem' }}>Vaihe 3: Viimeistele työohje ja lisää tarvittavat kuvat.</Typography>
                 <Paper sx={{ p: 6, m: 3, borderRadius: '7px' }}>
                     <Box component='form'>
                         <Grid container spacing={{ xs: 2, md: 3 }}>
