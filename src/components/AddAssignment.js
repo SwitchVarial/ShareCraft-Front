@@ -81,7 +81,7 @@ function AddAssignment () {
             const json = JSON.stringify(data);
 
             try {
-                const response = await axios.post('http://localhost:8080/assignments/', json, { headers: headers });
+                const response = await axios.post('https://sharecraft.herokuapp.com/assignments/', json, { headers: headers });
                 setAssignment({
                     name: '',
                     description: '',

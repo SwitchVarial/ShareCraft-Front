@@ -97,7 +97,7 @@ function AddImages () {
             const formData = new FormData();
             formData.append('file', image.img);
             try {
-                const response = await axios.post('http://localhost:8080/images/' + image.assignment_id, formData, { headers: headers });
+                const response = await axios.post('https://sharecraft.herokuapp.com/images/' + image.assignment_id, formData, { headers: headers });
                 setImage({
                     img: [],
                     assignment_id: id

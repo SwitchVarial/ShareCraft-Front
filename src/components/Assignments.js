@@ -10,7 +10,7 @@ function Assignments() {
 
     const getAllAssignments = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/assignments');
+            const response = await axios.get('https://sharecraft.herokuapp.com/assignments');
             setAssignments(response.data);
             setError('');
         } catch (error) {

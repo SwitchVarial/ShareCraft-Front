@@ -86,7 +86,7 @@ function Assignment() {
 
     const getAssignmentById = useCallback(async () => {
         try {
-            const response = await axios.get('http://localhost:8080/assignments/' + id);
+            const response = await axios.get('https://sharecraft.herokuapp.com/assignments/' + id);
             setAssignment(response.data);
             setError('');
         } catch (error) {
@@ -114,7 +114,7 @@ function Assignment() {
                     <Box sx={ assignmentBox }>
                         <Grid container spacing={{ xs: 1, md: 2 }}>
                             <Grid item xs={12} sm={6}>
-                                <Box component="img" sx={{ objectFit: 'cover', maxWidth: '100%' }} src={ assignment.images[0].url } alt={ assignment.name } />
+                                <Box component="img" sx={{ objectFit: 'cover', maxWidth: '100%' }} src={ 'https://sharecraft.herokuapp.com/images/' + assignments.images[0].url } alt={ assignment.name } />
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <Box sx={{ width: '100%', display: 'flex' }}>

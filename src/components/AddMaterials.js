@@ -86,7 +86,7 @@ function AddMaterials () {
             const json = JSON.stringify(data);
             console.log(json);
             try {
-                const response = await axios.post('http://localhost:8080/materials', json, { headers: headers });
+                const response = await axios.post('https://sharecraft.herokuapp.com/materials', json, { headers: headers });
                 setMaterial({
                     description: '',
                     assignment_id: id

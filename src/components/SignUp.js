@@ -59,7 +59,7 @@ function SignUp() {
             const json = JSON.stringify(data);
             console.log(json);
             try {
-                const response = await axios.post('http://localhost:8080/signup', json, { headers: { 'Content-Type': 'application/json'}});
+                const response = await axios.post('https://sharecraft.herokuapp.com/signup', json, { headers: { 'Content-Type': 'application/json'}});
                 setAccount({first_name:'', last_name:'', username:'', passwordHash:'', email:'', active: true, role: 'Teacher'})
                 console.log(response.data);
             } catch (error) {
